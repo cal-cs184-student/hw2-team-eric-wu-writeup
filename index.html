@@ -69,20 +69,20 @@
 		</p>
 
 		<figure>
-			<img src="assets/part1/1.png" alt="Teapot" style="width:50%"/>
-			<img src="assets/part1/2.png" alt="Teapot" style="width:50%"/>
-			<img src="assets/part1/3.png" alt="Teapot" style="width:50%"/>
-			<img src="assets/part1/4.png" alt="Teapot" style="width:50%"/>
-			<img src="assets/part1/5.png" alt="Teapot" style="width:50%"/>
-			<img src="assets/part1/6.png" alt="Teapot" style="width:50%"/>
-			<img src="assets/part1/7.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/1.png" alt="" style="width:50%"/>
+			<img src="assets/part1/2.png" alt="" style="width:50%"/>
+			<img src="assets/part1/3.png" alt="" style="width:50%"/>
+			<img src="assets/part1/4.png" alt="" style="width:50%"/>
+			<img src="assets/part1/5.png" alt="" style="width:50%"/>
+			<img src="assets/part1/6.png" alt="" style="width:50%"/>
+			<img src="assets/part1/7.png" alt="" style="width:50%"/>
 			<figcaption>
 				Various stages of de Casteljau's algorithm,
 				for a Bezier curve of 6 points.
 			</figcaption>
 		</figure>
 		<figure>
-			<img src="assets/part1/8.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/8.png" alt="" style="width:50%"/>
 			<figcaption>
 				The Bezier curve, after moving some control points around
 			</figcaption>
@@ -116,7 +116,22 @@
 		</div> -->
 
 		<h3>Part 2: Bezier surfaces with separable 1D de Casteljau</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		
+		<p>
+		When we can evaluate a Bezier curve, this gives us a way to extend de Casteljau's algorithm
+		to evaluate a points on a Bezier surface. A point on a N x N Bezier surface can be evaluated by first 
+		evaluating each row of points, to get N points along each row. This evaluation is done with a parameter u.
+
+		Then, a separate parameter t is used, treating these N points as the control points of a bezier curve.
+		This finally gives us a point at (u, v) on the Bezier surface.
+		</p>
+
+		<figure>
+			<img src="assets/part2/1.png" alt="" style="width:50%"/>
+			<figcaption>
+				The teapot, described by the file bez/teapot.bez
+			</figcaption>
+		</figure>
 
 		<h2>Section II: Triangle Meshes and Half-Edge Data Structure</h2>
 
