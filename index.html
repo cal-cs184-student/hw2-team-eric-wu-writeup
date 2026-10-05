@@ -28,34 +28,68 @@
 	<body>
 		<div class="container">
 		<h1>CS184/284A Fall 2026 Homework 2 Write-Up</h1>
-		<div style="text-align: center;">Names: </div>
+		<div style="text-align: center;">Names: Eric Wu</div>
 
 		<br>
 
-		Link to webpage: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">cs184.eecs.berkeley.edu/fa26</a>
+		Link to webpage: <a href="https://cal-cs184-student.github.io/hw2-team-eric-wu-writeup/">https://cal-cs184-student.github.io/hw2-team-eric-wu-writeup/</a>
 
 		<br>
 		
-		Link to GitHub repository: (TODO) <a href="https://cs184.eecs.berkeley.edu/fa26">cs184.eecs.berkeley.edu/fa26</a>
+		Link to GitHub repository: <a href="https://github.com/cal-cs184-student/hw2-team-eric-wu">https://github.com/cal-cs184-student/hw2-team-eric-wu</a>
 
+		<!--
 		<figure>
 			<img src="assets/teapot.png" alt="Teapot" style="width:50%"/>
 			<figcaption>You can add images with captions!</figcaption>
 		</figure>
+		-->
+
 
 		<!--
 		We've already added one heading per part, to make your write-up as navigable when grading. Please fit your write-up within these sections!
 		-->
 
 		<h2>Overview</h2>
+		TODO: 
 		Give a high-level overview of what you implemented in this homework. Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.
 
 		<h2>Section I: Bezier Curves and Surfaces</h2>
 
 		<h3>Part 1: Bezier curves with 1D de Casteljau subdivision</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>
+		In this part, de Casteljau's algorithm is used to evaluate a Bezier curve. The algorithm works by
+		doing linear interpolation along adjacent pairs of a list of N control points, to generate a
+		list of N-1 control points. This is then repeated until you are left with only one point, 
+		which is a point along the Bezier curve.
+		</p>
+		<p>
+		To generate all points along the curve, the algorithm is applied with a varied parameter
+		for the linear interpolation.
+		</p>
 
-		<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
+		<figure>
+			<img src="assets/part1/1.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/2.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/3.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/4.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/5.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/6.png" alt="Teapot" style="width:50%"/>
+			<img src="assets/part1/7.png" alt="Teapot" style="width:50%"/>
+			<figcaption>
+				Various stages of de Casteljau's algorithm,
+				for a Bezier curve of 6 points.
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="assets/part1/8.png" alt="Teapot" style="width:50%"/>
+			<figcaption>
+				The Bezier curve, after moving some control points around
+			</figcaption>
+		</figure>
+		
+		
+		<!-- <p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
 		<div style="display: flex; flex-direction: column; align-items: center;">
 			<table style="width: 100%; text-align: center; border-collapse: collapse;">
 			  <tr>
@@ -79,7 +113,7 @@
 				</td>
 			  </tr>
 			</table>
-		</div>
+		</div> -->
 
 		<h3>Part 2: Bezier surfaces with separable 1D de Casteljau</h3>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
