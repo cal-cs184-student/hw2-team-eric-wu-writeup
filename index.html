@@ -193,7 +193,39 @@
 		</div>
 
 		<h3>Part 5: Edge split</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		
+		<p>
+		In this part, I implemented an edge split.
+		The key to implementing this successfully was to go very slowly and methodically, and
+		keep all the code organized in one long routine. I found it extremely helpful to use 
+		a consistent naming scheme for vertices (V_a, V_b, ...),
+		half-edges (HE_am, HE_ma, ...), edges (E_am, E_bm, ...), and faces (F_amc, F_cmd, ...).
+		</p>
+		<p>
+		After my initial implementation, I would only see a single face (out of the 4 expected faces) correctly, after splitting
+		an edge. After staring at the code for a while, I pasted it into claude, which told me that 
+		I had incorrectly assigned the source vertex of 3 half edges.
+		</p>
+
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="assets/part5/1.png" width="400px"/>
+				  <figcaption>Teapot.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part5/2.png" width="400px"/>
+				  <figcaption>Teapot, with some edges split.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part5/3.png" width="400px"/>
+				  <figcaption>Teapot, with some edges split, then some edges flipped.</figcaption>
+				</td>
+			  </tr>
+			</table>
+		</div>
+
 
 		<h3>Part 6: Loop subdivision for mesh upsampling</h3>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
