@@ -228,12 +228,106 @@
 
 
 		<h3>Part 6: Loop subdivision for mesh upsampling</h3>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<h4>Implementation notes</h4>
+		<p>
+			To implement loop subdivision, I followed the 5 step procedure outlined in the comments
+			of the code.
+		</p>
+		<p>
+			For each vertex, I walked its neighbors, counting degree and summing neighbor positions. 
+			I computed newPosition for each vertex as described, and set isNew = false.
+		</p>
+		<p>
+			For each edge, I computed the edge's newPosition, which would be used later.
+		</p>
+		<p>
+			I iterated over only the original n edges of the mesh, saving nextEdge before each splitEdge call (to avoid problems with iterator invalidation).
+			I split each edge, and 
+			for the returned vertex, I set isNew = true and newPosition = e->newPosition.
+			I also modified the splitEdge routine to mark the correct edges as new/old: the two cross edges are new, and the two halves of the split edge are old.
+		</p>
+		<p>
+			I flipped every edge in the mesh with e->isNew == true that connects one old and one new vertex.
+		</p>
+		<p>
+			Finally, I assigned position = newPosition for all vertices of the mesh.
+		</p>
+		<p>
+			When implementing this part, I was originally unaware of needing to
+			mark edges as new/old based on where they came from each edge split.
+			I was originally check every single edge in the mesh,
+			and flipping them if they joined a new and old vertex, which
+			created a very ugly result.
+			I caught this issue by printing some sanity checks, and noticing that I was
+			actually flipping every single edge of the mesh.
+		</p>
+
+		<h4>Observations on the effect of subdivision</h4>
+		<p>
+			Loop subdivision is approximating, not interpolating, 
+			so the surface shrinks toward its control mesh's interior and the mesh becomes smoother and rounder with each iteration.
+			Sharp corners and edges get rounded off. 
+			A cube becomes a blob after a few subdivisions.
+			Corners with lower degree (such as a cube vertex of degree 3) are pulled inward the most.
+		</p>
+
+
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="assets/part6/1.png" width="200px"/>
+				  <figcaption>Original cube, no pre-splitting.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/2.png" width="200px"/>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/3.png" width="200px"/>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/4.png" width="200px"/>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/5.png" width="200px"/>
+				</td>
+			  </tr>
+			</table>
+		</div>
+		<p>
+			I found that one way to make the cube subdivide symmetrically is
+			to subdivide each edge that lies along a face, so that each face
+			consists of 4 triangles that divide the face symmetrically.
+			Since each vertex is symmetric after this step, this causes the subdivision
+			to continue to be symmetric.
+		</p>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<table style="width: 100%; text-align: center; border-collapse: collapse;">
+			  <tr>
+				<td style="text-align: center;">
+				  <img src="assets/part6/6.png" width="200px"/>
+				  <figcaption>Cube after pre-splitting.</figcaption>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/7.png" width="200px"/>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/8.png" width="200px"/>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/9.png" width="200px"/>
+				</td>
+				<td style="text-align: center;">
+				  <img src="assets/part6/10.png" width="200px"/>
+				</td>
+			  </tr>
+			</table>
+		</div>
 
 		<h2>(Optional) Section III: Potential Extra Credit - Art Competition: Model something Creative</h2>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		I did not do extra credit, because I am lazy.
 
-		<h2>Additional Notes (please remove)</h2>
+		<!-- <h2>Additional Notes (please remove)</h2>
 		<ul>
 			<li>You can also add code if you'd like as so: <code>code code code</code></li>
 			<li>If you'd like to add math equations, 
@@ -243,6 +337,6 @@
 				</ul>
 			</li>
 		</ul>
-		</div>
+		</div> -->
 	</body>
 </html>
